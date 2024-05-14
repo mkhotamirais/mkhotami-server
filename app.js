@@ -1,11 +1,11 @@
 const express = require("express");
 const { port } = require("./config/constants");
 const db = require("./config");
-const { corsOptions } = require("./config/cred");
+const { corsOptions, credentials } = require("./config/cred");
 const app = express();
 const cors = require("cors");
 
-// app.use(credentials);
+app.use(credentials);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
