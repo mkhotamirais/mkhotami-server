@@ -18,13 +18,12 @@ app.get("/", (req, res) => {
 
 // app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/user", async (req, res) => {
-  res.json({ name: "ahmad" });
-  // try {
-  //   const data = await User.find({});
-  //   ok(res, 200, `getUsers`, data);
-  // } catch (error) {
-  //   err(res, 400, error);
-  // }
+  try {
+    const data = await User.find({});
+    ok(res, 200, `getUsers`, data);
+  } catch (error) {
+    err(res, 400, error);
+  }
 });
 
 db.then(() => {
