@@ -5,7 +5,7 @@ const { credentials, corsOptions } = require("./config/cred");
 const app = express();
 const cors = require("cors");
 const { ok, err } = require("./helper/utils");
-const User = require("./models/userModel");
+// const User = require("./models/userModel");
 
 app.use(credentials);
 app.use(cors(corsOptions));
