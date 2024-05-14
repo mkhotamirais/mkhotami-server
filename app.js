@@ -4,8 +4,6 @@ const db = require("./config");
 const { credentials, corsOptions } = require("./config/cred");
 const app = express();
 const cors = require("cors");
-const { ok, err } = require("./helper/utils");
-// const User = require("./models/userModel");
 
 app.use(credentials);
 app.use(cors(corsOptions));
@@ -16,15 +14,7 @@ app.get("/", (req, res) => {
   res.send(`welcome to mkhotami app`);
 });
 
-// app.use("/api/user", require("./routes/userRoute"));
-app.use("/api/user", async (req, res) => {
-  try {
-    const data = await User.find({});
-    ok(res, 200, `getUsers`, data);
-  } catch (error) {
-    err(res, 400, error);
-  }
-});
+app.use("/api/user", require("./routes/userRoute"));
 
 db.then(() => {
   app.listen(port, () => console.log(`connect to mongodb and listening on port ${port}`));
