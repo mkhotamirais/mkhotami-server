@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const { id } = req.params;
-    const data = await User.find(id);
+    const data = await User.findById(id);
     if (!data) return err(res, 400, `data dengan id ${id} tidak ditemukan`);
     ok(res, 200, `getUserById`, data);
   } catch (error) {
@@ -21,4 +21,13 @@ const getUserById = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById };
+const postUser = async (req, res) => {
+  try {
+    const data = await User.create(req.body);
+    ok(res, 210, `post ${data?.username} success`, data);
+  } catch (error) {
+    err(res, 400, error);
+  }
+};
+
+module.exports = { getUsers, getUserById, postUser };
