@@ -5,14 +5,14 @@ const userSchema = new mongoose.Schema(
     username: {
       type: String,
       unique: true,
-      required: [true, "username required"],
+      required: true,
       minLength: [3, "min length 3 words"],
       maxLength: [100, "max length 100 words"],
     },
     email: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, minLength: [3, "min length 3 words"] },
     role: { type: String, enum: ["user", "guest", "admin"], default: "user" },
-    gender: String,
+    gender: { type: String, enum: ["male", "female"] },
     token: [String],
   },
   {

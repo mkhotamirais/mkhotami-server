@@ -1,14 +1,18 @@
 const express = require("express");
-const { port } = require("./config/constants");
+const { port, root } = require("./config/constants");
 const db = require("./config");
 const { corsOptions, credentials } = require("./config/cred");
 const app = express();
 const cors = require("cors");
+const { join } = require("path");
+const cookieParser = require("cookie-parser");
 
 app.use(credentials);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(join(root, "public")));
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send(`welcome to mkhotami app`);

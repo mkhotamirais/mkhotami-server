@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { err } = require("./utils");
-const { ats } = require("../config/constants");
+const { at } = require("../config/constants");
 const User = require("../models/userModel");
 
 const verifyToken = async (req, res, next) => {
@@ -9,14 +9,13 @@ const verifyToken = async (req, res, next) => {
   // if (!authHeader?.startsWith("Bearer ")) return err(res, 401, "token tidak ada");
   // const token = authHeader.split(" ")[1];
   // cara 2
-  const token = req.cookies.accessToken;
+  const token = req.cookies.token;
   // dari cara 1 atau cara 2 lanjut ke sini
   const match = await User.findOne({ token });
   if (!match) return err(res, 401, "token tidak cocok");
-  jwt.verify(token, ats, (error, decoded) => {
+  jwt.verify(token, at, (error, decoded) => {
     if (error) return err(res, 403, "forbidden");
-    req.me = decoded;
-    req.token = token;
+    req.userData = decoded;
     next();
   });
 };
