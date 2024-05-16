@@ -8,15 +8,18 @@ const {
   signup,
   signout,
   getMe,
+  deleteMe,
+  updateMe,
 } = require("../controllers/userController");
 const { verifyToken, verifyAdmin } = require("../helper/middleware");
+const { updateMany } = require("../models/userModel");
 
 const router = require("express").Router();
 
 router.post("/signup", signup);
 router.patch("/signin", signin);
 router.use(verifyToken);
-router.get("/me", getMe);
+router.route("/me").get(getMe).patch(updateMe).delete(deleteMe);
 router.patch("/signout", signout);
 router.use(verifyAdmin);
 router.route("/").get(getUsers).post(postUser);
