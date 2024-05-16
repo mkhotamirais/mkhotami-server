@@ -1,6 +1,6 @@
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const multer = require("multer");
-const path = require("path");
+const { join } = require("path");
 const { root, at } = require("../config/constants");
 const jwt = require("jsonwebtoken");
 
@@ -17,7 +17,7 @@ const err = (res, status, error) => {
   res.status(status).json({ message: error?.message || error });
 };
 
-// const upload = multer({ dest: path.join(root, "public/images/product") }).single("image");
+const upload = multer({ dest: join(root, "public/images") }).single("image");
 
 const hashPass = (pass) => {
   const salt = genSaltSync(10);
@@ -51,4 +51,4 @@ const removeCookie = (res, name) => {
   });
 };
 
-module.exports = { ok, err, hashPass, comparePass, jwtSign, setCookie, removeCookie };
+module.exports = { ok, err, hashPass, comparePass, jwtSign, setCookie, removeCookie, upload };

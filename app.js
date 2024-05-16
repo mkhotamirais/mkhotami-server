@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/tag", require("./routes/tagRoute"));
 app.use("/api/category", require("./routes/categoryRoute"));
+app.use("/api/product", require("./routes/productRoute"));
 
 db.then(() => {
   app.listen(port, () => console.log(`connect to mongodb and listening on port ${port}`));
