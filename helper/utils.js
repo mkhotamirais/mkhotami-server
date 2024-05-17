@@ -17,7 +17,7 @@ const err = (res, status, error) => {
   res.status(status).json({ message: error?.message || error });
 };
 
-const upload = multer({ dest: join(root, "public/images") }).single("image");
+const upload = multer({ dest: join(root, "public", "images") });
 
 const hashPass = (pass) => {
   const salt = genSaltSync(10);
