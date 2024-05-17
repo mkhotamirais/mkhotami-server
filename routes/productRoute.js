@@ -6,6 +6,8 @@ const {
   postProduct,
 } = require("../controllers/productController");
 const { verifyToken, verifyAdmin } = require("../helper/middleware");
+// const upload = multer({ dest: join(root, "public", "images") });
+
 // const { upload } = require("../helper/utils");
 
 const router = require("express").Router();

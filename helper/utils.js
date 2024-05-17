@@ -17,8 +17,6 @@ const err = (res, status, error) => {
   res.status(status).json({ message: error?.message || error });
 };
 
-const upload = multer({ dest: join(root, "public", "images") });
-
 const hashPass = (pass) => {
   const salt = genSaltSync(10);
   const hash = hashSync(pass, salt);
@@ -51,4 +49,4 @@ const removeCookie = (res, name) => {
   });
 };
 
-module.exports = { ok, err, hashPass, comparePass, jwtSign, setCookie, removeCookie, upload };
+module.exports = { ok, err, hashPass, comparePass, jwtSign, setCookie, removeCookie };
