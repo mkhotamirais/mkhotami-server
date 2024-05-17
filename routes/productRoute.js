@@ -6,6 +6,9 @@ const {
   postProduct,
 } = require("../controllers/productController");
 const { verifyToken, verifyAdmin } = require("../helper/middleware");
+const multer = require("multer");
+// const { join } = require("path");
+
 // const upload = multer({ dest: join(root, "public", "images") });
 
 // const { upload } = require("../helper/utils");

@@ -1,7 +1,5 @@
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
-const multer = require("multer");
-const { join } = require("path");
-const { root, at } = require("../config/constants");
+const { at } = require("../config/constants");
 const jwt = require("jsonwebtoken");
 
 // ok 200, created 201, no content 204
