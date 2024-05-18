@@ -12,7 +12,6 @@ const {
   updateMe,
 } = require("../controllers/userController");
 const { verifyToken, verifyAdmin } = require("../helper/middleware");
-const { updateMany } = require("../models/userModel");
 
 const router = require("express").Router();
 
