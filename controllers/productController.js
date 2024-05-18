@@ -19,9 +19,9 @@ const getProducts = async (req, res) => {
       .sort({ createdAt: -1 })
       .select("-__v")
       .skip(parseInt(skip))
-      .limit(parseInt(limit))
-      .populate({ path: "tags", select: ["_id", "name"] })
-      .populate({ path: "category", select: ["_id", "name"] });
+      .limit(parseInt(limit));
+    // .populate({ path: "tags", select: ["_id", "name"] })
+    // .populate({ path: "category", select: ["_id", "name"] });
     res.status(200).json({ message: `getProducts`, count, countCriteria, data });
   } catch (error) {
     err(res, 400, error);
@@ -65,7 +65,7 @@ const postProduct = async (req, res) => {
     }
     req.body.imageName = filename + ext;
     // req.body.imageUrl = `${req.protocol}://${req.get("host")}/images/${filename + ext}`;
-    req.body.imageUrl = `https://mkhotami-server.vercel.app/images/${filename + ext}`;
+    req.body.imageUrl = `images/${filename + ext}`;
 
     try {
       const data = await Product.create(req.body);
