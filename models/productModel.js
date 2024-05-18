@@ -16,7 +16,6 @@ const productSchema = mongoose.Schema(
     },
     description: { type: String },
     imageName: String,
-    imageUrl: String,
     // category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
     // tags: { type: Array, ref: "Tag", default: [] },
   },

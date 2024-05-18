@@ -65,7 +65,6 @@ const postProduct = async (req, res) => {
     }
     req.body.imageName = filename + ext;
     // req.body.imageUrl = `${req.protocol}://${req.get("host")}/images/${filename + ext}`;
-    req.body.imageUrl = `images/${filename + ext}`;
 
     try {
       const data = await Product.create(req.body);
