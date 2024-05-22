@@ -17,8 +17,7 @@ const err = (res, status, error) => {
 
 const hashPass = (pass) => {
   const salt = genSaltSync(10);
-  const hash = hashSync(pass, salt);
-  return hash;
+  return hashSync(pass, salt);
 };
 
 const comparePass = (pass, oldPass) => {

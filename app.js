@@ -18,10 +18,9 @@ app.get("/", (req, res) => {
   res.send(`welcome to mkhotami app`);
 });
 
+app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/user", require("./routes/userRoute"));
-app.use("/api/tag", require("./routes/tagRoute"));
-app.use("/api/category", require("./routes/categoryRoute"));
-app.use("/api/product", require("./routes/productRoute"));
+app.use("/api/kamus", require("./routes/kamusRoute"));
 
 db.then(() => {
   app.listen(port, () => console.log(`connect to mongodb and listening on port ${port}`));
