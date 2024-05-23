@@ -39,7 +39,7 @@ const updateKamus = async (req, res) => {
     const match = await Kamus.findById(id);
     if (!match) return err(res, 400, `data id tidak ditemukan`);
     const data = await Kamus.findByIdAndUpdate(match?._id, req.body, { new: true });
-    ok(res, 200, `getKamus`, data);
+    ok(res, 200, `update ${data.name} success`, data);
   } catch (error) {
     err(res, 400, error);
   }
@@ -51,7 +51,7 @@ const deleteKamus = async (req, res) => {
     const match = await Kamus.findById(id);
     if (!match) return err(res, 400, `data id tidak ditemukan`);
     const data = await Kamus.findByIdAndDelete(match?._id);
-    ok(res, 200, `getKamus`, data);
+    ok(res, 200, `delete ${data.name} succes`, data);
   } catch (error) {
     err(res, 400, error);
   }

@@ -70,7 +70,7 @@ const deleteMe = async (req, res) => {
   try {
     const match = await User.findById(req.userData.id);
     if (match.role === "admin") return err(res, 400, `role admin tidak bisa dihapus, ubah dulu rolenya`);
-    await User.findByIdAndDelete(match?._idid);
+    await User.findByIdAndDelete(match?._id);
     ok(res, 200, `akun anda berhasil dihapus`);
   } catch (error) {
     err(res, 400, error);
